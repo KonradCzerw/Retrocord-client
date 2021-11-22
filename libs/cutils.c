@@ -6,10 +6,12 @@
 #include <shlwapi.h>
 
 char* getExePath() {
-	char result[MAX_PATH];
-	int count = GetModuleFileNameA(NULL, result, MAX_PATH);
-	PathRemoveFileSpecA(result);
-	return count ? result : NULL;
+	TCHAR result[MAX_PATH];
+	int count = GetModuleFileNameW(NULL, result, MAX_PATH);
+	PathRemoveFileSpecW(result);
+	char* cstr;
+	wcstombs(cstr, result, count + 1);
+	return count ? cstr : NULL;
 }
 
 #else // LINUX

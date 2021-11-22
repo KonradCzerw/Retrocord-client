@@ -11,18 +11,18 @@ let servers = []
 let channels = {}
 let messages = []
 function sanitize(str) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#x27;',
-            "/": '&#x2F;',
-        };
-        const reg = /[&<>"'/]/ig;
-        return str.toString().replace(reg, (match)=>(map[match]));
-      
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        "/": '&#x2F;',
+    };
+    const reg = /[&<>"'/]/ig;
+    return str.toString().replace(reg, (match)=>map[match]);
 }
+        
 function writeMSG(obj) {
     const elem = document.createElement('p')
     elem.classList.add('text')
