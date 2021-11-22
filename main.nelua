@@ -1,6 +1,8 @@
 -- vim: filetype=lua
 
 require 'libs.webview'
+require 'libs.cutils'
 require 'os'
-local dir = os.getenv("WEBFILES")
+-- local dir = os.getenv("WEBFILES")
+local dir = getExePath()
 webview_run("Retrocord", "file://"..dir.."/web/index.html", 700, 400, 1)

@@ -1,0 +1,13 @@
+##[[
+	if CUTILS_LINKLIB then
+		linklib(CUTILS_LINKLIB)
+	else
+		cdefine 'CUTILS_IMPLEMENTATION'
+		if ccinfo.is_windows then
+			cdefine 'WINDOWS'
+			cflags '-lshlwapi'
+		end
+	end
+	cinclude 'cutils.h'
+]]
+global function getExePath(): cstring <cimport> end
